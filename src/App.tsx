@@ -53,7 +53,7 @@ function App() {
         <p>
           <span>Hello world!</span>
         </p>
-        <button onClick={handleEnqueue}>Enqueue</button>
+        <button type="button" onClick={handleEnqueue}>Enqueue</button>
       </div>
       {hoveredPTag && (
         <AssistTextDialog
