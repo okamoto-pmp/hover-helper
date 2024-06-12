@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "CRXJS React Vite Example",
+    "version": "1.0.0",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "tabs",
+        "notifications",
+        "background"
+    ],
+    "icons": {
+        "48": "icon48.jpg"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "src/content.tsx"
+            ],
+            "matches": [
+                "https://example.com/*"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "src/background/index.ts"
+    },
+    "action": {
+        "default_popup": "index.html"
+    }
+}
