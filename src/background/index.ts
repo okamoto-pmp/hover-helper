@@ -13,4 +13,8 @@ const queue = async () => {
         message: `Enqueued at ${new Date().toLocaleTimeString()}`,
         priority: 2,
     });
+
+    chrome.runtime.sendMessage({
+        action: "queueCompleted",
+    });
 };

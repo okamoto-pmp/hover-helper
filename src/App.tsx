@@ -1,4 +1,6 @@
 import "./App.css";
+import { useEffect } from "react";
+import { Message } from "../types";
 
 function App() {
   const handleEnqueue = () => {
@@ -6,6 +8,22 @@ function App() {
       action: "enqueue",
     });
   };
+
+  useEffect(() => {
+    const listener = (request: Message) => {
+      console.log(request);
+
+      if (request.action === "queueCompleted") {
+        console.log("Queue function completed");
+      }
+    };
+
+    chrome.runtime.onMessage.addListener(listener);
+
+    return () => {
+      chrome.runtime.onMessage.removeListener(listener);
+    };
+  }, []);
 
   return (
     <>
