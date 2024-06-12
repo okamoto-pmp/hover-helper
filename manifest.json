@@ -12,6 +12,16 @@
     "icons": {
         "48": "icon48.jpg"
     },
+    "content_scripts": [
+        {
+            "js": [
+                "src/content.tsx"
+            ],
+            "matches": [
+                "https://example.com/*"
+            ]
+        }
+    ],
     "background": {
         "service_worker": "src/background/index.ts"
     },
