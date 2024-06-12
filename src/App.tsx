@@ -99,11 +99,6 @@ function App() {
 
   return (
     <>
-      <div>
-        <p>
-          <span>Hello world!</span>
-        </p>
-      </div>
       {hoveredPTag && (
         <AssistTextDialog message={dialogMessage} position={dialogPosition} />
       )}
