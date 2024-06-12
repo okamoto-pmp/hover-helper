@@ -5,7 +5,7 @@ import "./index.css";
 
 const root = document.createElement("div");
 root.id = "crx-root";
-root.classList.add("hover-helper");
+root.style.display = "none";
 document.body.appendChild(root);
 
 ReactDOM.createRoot(root).render(
