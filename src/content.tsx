@@ -5,7 +5,6 @@ import "./index.css";
 
 const root = document.createElement("div");
 root.id = "crx-root";
-// root.style.display = "none";
 document.body.appendChild(root);
 
 ReactDOM.createRoot(root).render(

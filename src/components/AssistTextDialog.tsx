@@ -10,7 +10,7 @@ export const AssistTextDialog: React.FC<AssistTextDialogProps> = ({
   position,
 }) => {
   return (
-    <div style={{ ...styles.dialog, top: position.y - 50, left: position.x }}>
+    <div style={{ ...styles.dialog, top: position.y, left: position.x }}>
       {message}
     </div>
   );
@@ -19,7 +19,7 @@ export const AssistTextDialog: React.FC<AssistTextDialogProps> = ({
 const styles: { [key: string]: React.CSSProperties } = {
   dialog: {
     position: "absolute",
-    width: "200px",
+    maxWidth: "400px",
     padding: "10px",
     border: "1px solid #000",
     backgroundColor: "#fff",
