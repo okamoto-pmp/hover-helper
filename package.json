@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@azure/ai-language-text": "^1.1.0",
+    "@azure/openai": "^1.0.0-beta.12",
     "@types/chrome": "^0.0.268",
+    "openai": "^4.50.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

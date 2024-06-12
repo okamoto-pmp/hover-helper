@@ -18,7 +18,7 @@
                 "src/content.tsx"
             ],
             "matches": [
-                "https://example.com/*"
+                "https://dev.to/*"
             ]
         }
     ],
