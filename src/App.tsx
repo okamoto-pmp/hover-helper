@@ -1,8 +1,15 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Message } from "../types";
+import { AssistTextDialog } from "./components/AssistTextDialog";
 
 function App() {
+  const [hoveredPTag, setHoveredPTag] = useState<HTMLElement | null>(null);
+  const [dialogPosition, setDialogPosition] = useState<{
+    x: number;
+    y: number;
+  }>({ x: 0, y: 0 });
+
   const handleEnqueue = async () => {
     chrome.runtime.sendMessage({
       action: "enqueue",
@@ -12,10 +19,7 @@ function App() {
   useEffect(() => {
     const listener = (request: Message) => {
       if (request.action === "queueCompleted") {
-        const pTags = document.querySelectorAll("p");
-        pTags.forEach((pTag) => {
-          pTag.style.color = "red";
-        });
+        addListenerToKeyword();
       }
     };
 
@@ -26,12 +30,37 @@ function App() {
     };
   }, []);
 
+  const addListenerToKeyword = () => {
+    const spanTags = document.querySelectorAll("span");
+    spanTags.forEach((spanTag) => {
+      spanTag.addEventListener("mouseenter", handleMouseEnter);
+      spanTag.addEventListener("mouseleave", handleMouseLeave);
+    });
+  };
+
+  const handleMouseEnter = (event: MouseEvent) => {
+    setHoveredPTag(event.currentTarget as HTMLElement);
+    setDialogPosition({ x: event.clientX, y: event.clientY });
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredPTag(null);
+  };
+
   return (
     <>
       <div>
-        <h1>Hello world!</h1>
+        <p>
+          <span>Hello world!</span>
+        </p>
         <button onClick={handleEnqueue}>Enqueue</button>
       </div>
+      {hoveredPTag && (
+        <AssistTextDialog
+          message="This is a dialog"
+          position={dialogPosition}
+        />
+      )}
     </>
   );
 }
